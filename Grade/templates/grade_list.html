@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade List</title>
+</head>
+<body>
+    <h1>Grades List</h1>
+    <table border="1">
+        <tr>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Actions</th> <!-- Додаємо стовпець для дій -->
+        </tr>
+        {% for grade in grades %}
+        <tr>
+            <td>
+                {% for student in students_list %}
+                    {% if student.id == grade.student_id %}
+                        {{ student.first_name }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {% for subject in subjects_list %}
+                    {% if subject.id == grade.subject_id %}
+                        {{ subject.name }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ grade.grade }}</td>
+            <td>
+                <!-- Кнопка для оновлення -->
+                <a href="{% url 'update_grade' grade.id %}">Update</a>
+                <!-- Кнопка для видалення -->
+                <a href="{% url 'delete_grade' grade.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+
+</body>
+</html>

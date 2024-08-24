@@ -1,0 +1,31 @@
+<!-- templates/students/add_student.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Student</title>
+</head>
+<body>
+    <h1>Add New Student</h1>
+    <form method="post" action="{% url 'add' %}">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required><br>
+    
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+    
+        <label for="data_of_birth_day">Date of Birth:</label>
+        <input type="date" id="data_of_birth_day" name="data_of_birth_day" required><br>
+    
+        <label for="group_number">Group Number:</label>
+        <input type="text" id="group_number" name="group_number" required><br>
+    
+        <input type="submit" value="Add Student">
+    </form>
+    
+    <br>
+</body>
+</html>
